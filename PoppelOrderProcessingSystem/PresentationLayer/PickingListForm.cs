@@ -92,7 +92,7 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Picking list sent to Picking Clerk.");
             this.Close();
         }
 

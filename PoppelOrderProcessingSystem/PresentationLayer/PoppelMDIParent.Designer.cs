@@ -42,7 +42,6 @@
             this.btnCurrentOrders = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.btnCompany = new System.Windows.Forms.Button();
-            this.dataSetForCustomers = new System.Windows.Forms.Button();
             this.makeOrderButton = new System.Windows.Forms.Button();
             this.addCustomerButton = new System.Windows.Forms.Button();
             this.lblEST = new System.Windows.Forms.Label();
@@ -133,7 +132,7 @@
             this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInventory.Location = new System.Drawing.Point(46, 84);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(102, 23);
+            this.btnInventory.Size = new System.Drawing.Size(122, 23);
             this.btnInventory.TabIndex = 56;
             this.btnInventory.Text = "Print Inventory Report";
             this.btnInventory.UseVisualStyleBackColor = false;
@@ -143,7 +142,7 @@
             // 
             this.btnCurrentOrders.BackColor = System.Drawing.Color.HotPink;
             this.btnCurrentOrders.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCurrentOrders.Location = new System.Drawing.Point(305, 84);
+            this.btnCurrentOrders.Location = new System.Drawing.Point(196, 84);
             this.btnCurrentOrders.Name = "btnCurrentOrders";
             this.btnCurrentOrders.Size = new System.Drawing.Size(103, 23);
             this.btnCurrentOrders.TabIndex = 57;
@@ -154,7 +153,7 @@
             // 
             this.btnHelp.BackColor = System.Drawing.Color.HotPink;
             this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnHelp.Location = new System.Drawing.Point(700, 84);
+            this.btnHelp.Location = new System.Drawing.Point(620, 84);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(111, 23);
             this.btnHelp.TabIndex = 58;
@@ -166,7 +165,7 @@
             // 
             this.btnCompany.BackColor = System.Drawing.Color.HotPink;
             this.btnCompany.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCompany.Location = new System.Drawing.Point(839, 84);
+            this.btnCompany.Location = new System.Drawing.Point(760, 84);
             this.btnCompany.Name = "btnCompany";
             this.btnCompany.Size = new System.Drawing.Size(114, 23);
             this.btnCompany.TabIndex = 59;
@@ -174,23 +173,11 @@
             this.btnCompany.UseVisualStyleBackColor = false;
             this.btnCompany.Click += new System.EventHandler(this.btnCompany_Click);
             // 
-            // dataSetForCustomers
-            // 
-            this.dataSetForCustomers.BackColor = System.Drawing.Color.HotPink;
-            this.dataSetForCustomers.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.dataSetForCustomers.Location = new System.Drawing.Point(172, 84);
-            this.dataSetForCustomers.Name = "dataSetForCustomers";
-            this.dataSetForCustomers.Size = new System.Drawing.Size(111, 23);
-            this.dataSetForCustomers.TabIndex = 60;
-            this.dataSetForCustomers.Text = "Customers";
-            this.dataSetForCustomers.UseVisualStyleBackColor = false;
-            this.dataSetForCustomers.Click += new System.EventHandler(this.dataSetForCustomers_Click);
-            // 
             // makeOrderButton
             // 
             this.makeOrderButton.BackColor = System.Drawing.Color.HotPink;
             this.makeOrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.makeOrderButton.Location = new System.Drawing.Point(572, 84);
+            this.makeOrderButton.Location = new System.Drawing.Point(478, 84);
             this.makeOrderButton.Name = "makeOrderButton";
             this.makeOrderButton.Size = new System.Drawing.Size(103, 23);
             this.makeOrderButton.TabIndex = 61;
@@ -203,7 +190,7 @@
             // 
             this.addCustomerButton.BackColor = System.Drawing.Color.HotPink;
             this.addCustomerButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.addCustomerButton.Location = new System.Drawing.Point(431, 84);
+            this.addCustomerButton.Location = new System.Drawing.Point(329, 84);
             this.addCustomerButton.Name = "addCustomerButton";
             this.addCustomerButton.Size = new System.Drawing.Size(114, 23);
             this.addCustomerButton.TabIndex = 62;
@@ -232,7 +219,6 @@
             this.Controls.Add(this.lblEST);
             this.Controls.Add(this.addCustomerButton);
             this.Controls.Add(this.makeOrderButton);
-            this.Controls.Add(this.dataSetForCustomers);
             this.Controls.Add(this.btnCompany);
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnCurrentOrders);
@@ -271,7 +257,6 @@
         private System.Windows.Forms.Button btnCurrentOrders;
         private System.Windows.Forms.Button btnHelp;
         private System.Windows.Forms.Button btnCompany;
-        private System.Windows.Forms.Button dataSetForCustomers;
         private System.Windows.Forms.Button makeOrderButton;
         private System.Windows.Forms.Button addCustomerButton;
         private System.Windows.Forms.Label lblEST;

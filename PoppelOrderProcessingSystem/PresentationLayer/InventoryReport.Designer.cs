@@ -41,7 +41,7 @@
             this.inventoryReportGroupBox.Controls.Add(this.dateTextBox);
             this.inventoryReportGroupBox.Controls.Add(this.dateLabel);
             this.inventoryReportGroupBox.Controls.Add(this.inventoryReportListView);
-            this.inventoryReportGroupBox.Location = new System.Drawing.Point(122, 72);
+            this.inventoryReportGroupBox.Location = new System.Drawing.Point(49, 62);
             this.inventoryReportGroupBox.Name = "inventoryReportGroupBox";
             this.inventoryReportGroupBox.Size = new System.Drawing.Size(864, 427);
             this.inventoryReportGroupBox.TabIndex = 31;
@@ -50,7 +50,7 @@
             // 
             // dateTextBox
             // 
-            this.dateTextBox.Location = new System.Drawing.Point(215, 34);
+            this.dateTextBox.Location = new System.Drawing.Point(205, 33);
             this.dateTextBox.Name = "dateTextBox";
             this.dateTextBox.Size = new System.Drawing.Size(151, 20);
             this.dateTextBox.TabIndex = 32;
@@ -58,7 +58,7 @@
             // dateLabel
             // 
             this.dateLabel.AutoSize = true;
-            this.dateLabel.Location = new System.Drawing.Point(87, 34);
+            this.dateLabel.Location = new System.Drawing.Point(77, 33);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(30, 13);
             this.dateLabel.TabIndex = 30;
@@ -69,7 +69,7 @@
             this.inventoryReportListView.BackColor = System.Drawing.Color.HotPink;
             this.inventoryReportListView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.inventoryReportListView.HideSelection = false;
-            this.inventoryReportListView.Location = new System.Drawing.Point(62, 93);
+            this.inventoryReportListView.Location = new System.Drawing.Point(52, 92);
             this.inventoryReportListView.Name = "inventoryReportListView";
             this.inventoryReportListView.Size = new System.Drawing.Size(733, 265);
             this.inventoryReportListView.TabIndex = 27;
@@ -80,7 +80,7 @@
             this.InventoryReportLabel.AutoSize = true;
             this.InventoryReportLabel.BackColor = System.Drawing.Color.Peru;
             this.InventoryReportLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.InventoryReportLabel.Location = new System.Drawing.Point(444, 35);
+            this.InventoryReportLabel.Location = new System.Drawing.Point(288, 23);
             this.InventoryReportLabel.Name = "InventoryReportLabel";
             this.InventoryReportLabel.Size = new System.Drawing.Size(236, 20);
             this.InventoryReportLabel.TabIndex = 30;
@@ -91,7 +91,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PoppelOrderProcessingSystem.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(1109, 591);
+            this.ClientSize = new System.Drawing.Size(964, 526);
             this.Controls.Add(this.inventoryReportGroupBox);
             this.Controls.Add(this.InventoryReportLabel);
             this.Name = "InventoryReport";

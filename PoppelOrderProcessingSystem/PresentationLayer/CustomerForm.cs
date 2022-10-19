@@ -281,25 +281,37 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
         {
             // This will lead us to where we will be able to select Order Items
             PopulateObject();
-            
-            if (orderForm == null)
+            if (customerController.Customer.CustomersCreditStatus == "Positive")
             {
-                CreateNewOrderForm();
+                if (orderForm == null)
+                {
+                    CreateNewOrderForm();
+                }
+                if (orderForm.listFormClosed)
+                {
+                    CreateNewOrderForm();
+                }
+                //customerForm.setUpCustomerListView();
+                orderForm.Show();
             }
-            if (orderForm.listFormClosed)
+
+            else
             {
-                CreateNewOrderForm();
+                MessageBox.Show("Customer has a NEGATIVE Credit Status. Cannot place order.");
+                return;
             }
-            //customerForm.setUpCustomerListView();
-            orderForm.Show();
 
         }
 
         public void CreateNewOrderForm()
         {
-            inventoryController = new InventoryController();
-            orderForm = new OrderForm(customerController, inventoryController);
-            orderForm.StartPosition = FormStartPosition.Manual;
+            
+            
+            
+                inventoryController = new InventoryController();
+                orderForm = new OrderForm(customerController, inventoryController);
+                orderForm.StartPosition = FormStartPosition.Manual;
+            
         }
 
     }
