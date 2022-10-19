@@ -239,6 +239,7 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
             else
             {
                 // Undo all of the events that occcured as a result of adding the product
+                undoButton.Visible = false;
                 totalSoFar -= amount;
                 remainingCustomerCreditAmount += amount;
                 if (remainingCustomerCreditAmount < totalSoFar)

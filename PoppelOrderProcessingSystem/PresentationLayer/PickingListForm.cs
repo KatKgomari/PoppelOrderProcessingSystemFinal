@@ -28,8 +28,15 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
             InitializeComponent();
             this.customerController = customerController;
             this.orderItems = orderItems;
+            customer = customerController.Customer;
             totalTextBox.Enabled = false;
             totalTextBox.Text = orderTotalAmount.ToString();
+            dateTextBox.Enabled = false;
+            dateTextBox.Text = DateTime.Now.ToString();
+            pickingListCustomerTextBox.Enabled = false;
+            customerIDTextBox.Enabled = false;
+            customerIDTextBox.Text = customer.CustomerID.ToString();
+            pickingListCustomerTextBox.Text = customer.CustomerName;
         }
 
         #region Form events 
@@ -85,7 +92,13 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -18,6 +18,10 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
         private CustomerController customerController;
         private CustomerForm customerForm;
         private AddCustomerForm addCustomerForm;
+        private Help helpForm;
+        private Company companyForm;
+        private InventoryReport inventoryReport;
+        private InventoryController inventoryController;
         #endregion
 
         public PoppelMDIParent()
@@ -50,6 +54,26 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
             addCustomerForm.StartPosition = FormStartPosition.Manual;
         }
 
+        public void CreateNewHelpForm()
+        {
+            helpForm = new Help();
+            helpForm.MdiParent = this;
+            helpForm.StartPosition = FormStartPosition.Manual;
+        }
+        public void CreateNewCompanyForm()
+        {
+            companyForm = new Company();
+            companyForm.MdiParent = this;
+            companyForm.StartPosition = FormStartPosition.Manual;
+        }
+
+        public void CreateNewInventoryReport()
+        {
+            inventoryController = new InventoryController();
+            inventoryReport = new InventoryReport(inventoryController);
+            inventoryReport.MdiParent = this;
+            inventoryReport.StartPosition = FormStartPosition.Manual;
+        }
 
         #endregion
 
@@ -182,7 +206,15 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-
+            if (helpForm == null)
+            {
+                CreateNewHelpForm();
+            }
+            if (helpForm.listFormClosed)
+            {
+                CreateNewHelpForm();
+            }
+            helpForm.Show();
         }
 
        
@@ -194,6 +226,30 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
 
         }
 
-        
+        private void btnCompany_Click(object sender, EventArgs e)
+        {
+            if (companyForm == null)
+            {
+                CreateNewCompanyForm();
+            }
+            if (companyForm.listFormClosed)
+            {
+                CreateNewCompanyForm();
+            }
+            companyForm.Show();
+        }
+
+        private void btnInventory_Click(object sender, EventArgs e)
+        {
+            if (inventoryReport == null)
+            {
+                CreateNewInventoryReport();
+            }
+            if (inventoryReport.listFormClosed)
+            {
+                CreateNewInventoryReport();
+            }
+            inventoryReport.Show();
+        }
     }
 }

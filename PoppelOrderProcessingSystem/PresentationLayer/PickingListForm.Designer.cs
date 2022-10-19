@@ -34,6 +34,12 @@
             this.totalLabel = new System.Windows.Forms.Label();
             this.totalTextBox = new System.Windows.Forms.TextBox();
             this.doneButton = new System.Windows.Forms.Button();
+            this.dateLabel = new System.Windows.Forms.Label();
+            this.pickingListCustLabel = new System.Windows.Forms.Label();
+            this.dateTextBox = new System.Windows.Forms.TextBox();
+            this.pickingListCustomerTextBox = new System.Windows.Forms.TextBox();
+            this.customerIDLabel = new System.Windows.Forms.Label();
+            this.customerIDTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +56,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.customerIDTextBox);
+            this.groupBox1.Controls.Add(this.customerIDLabel);
+            this.groupBox1.Controls.Add(this.pickingListCustomerTextBox);
+            this.groupBox1.Controls.Add(this.dateTextBox);
+            this.groupBox1.Controls.Add(this.pickingListCustLabel);
+            this.groupBox1.Controls.Add(this.dateLabel);
             this.groupBox1.Controls.Add(this.totalTextBox);
             this.groupBox1.Controls.Add(this.totalLabel);
             this.groupBox1.Controls.Add(this.pickingList_ListView);
@@ -100,6 +112,55 @@
             this.doneButton.UseVisualStyleBackColor = true;
             this.doneButton.Click += new System.EventHandler(this.button1_Click);
             // 
+            // dateLabel
+            // 
+            this.dateLabel.AutoSize = true;
+            this.dateLabel.Location = new System.Drawing.Point(87, 34);
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.Size = new System.Drawing.Size(30, 13);
+            this.dateLabel.TabIndex = 30;
+            this.dateLabel.Text = "Date";
+            // 
+            // pickingListCustLabel
+            // 
+            this.pickingListCustLabel.AutoSize = true;
+            this.pickingListCustLabel.Location = new System.Drawing.Point(87, 65);
+            this.pickingListCustLabel.Name = "pickingListCustLabel";
+            this.pickingListCustLabel.Size = new System.Drawing.Size(51, 13);
+            this.pickingListCustLabel.TabIndex = 31;
+            this.pickingListCustLabel.Text = "Customer";
+            this.pickingListCustLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // dateTextBox
+            // 
+            this.dateTextBox.Location = new System.Drawing.Point(215, 34);
+            this.dateTextBox.Name = "dateTextBox";
+            this.dateTextBox.Size = new System.Drawing.Size(151, 20);
+            this.dateTextBox.TabIndex = 32;
+            // 
+            // pickingListCustomerTextBox
+            // 
+            this.pickingListCustomerTextBox.Location = new System.Drawing.Point(215, 62);
+            this.pickingListCustomerTextBox.Name = "pickingListCustomerTextBox";
+            this.pickingListCustomerTextBox.Size = new System.Drawing.Size(151, 20);
+            this.pickingListCustomerTextBox.TabIndex = 33;
+            // 
+            // customerIDLabel
+            // 
+            this.customerIDLabel.AutoSize = true;
+            this.customerIDLabel.Location = new System.Drawing.Point(430, 41);
+            this.customerIDLabel.Name = "customerIDLabel";
+            this.customerIDLabel.Size = new System.Drawing.Size(65, 13);
+            this.customerIDLabel.TabIndex = 34;
+            this.customerIDLabel.Text = "Customer ID";
+            // 
+            // customerIDTextBox
+            // 
+            this.customerIDTextBox.Location = new System.Drawing.Point(520, 38);
+            this.customerIDTextBox.Name = "customerIDTextBox";
+            this.customerIDTextBox.Size = new System.Drawing.Size(151, 20);
+            this.customerIDTextBox.TabIndex = 35;
+            // 
             // PickingListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,5 +190,11 @@
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.ListView pickingList_ListView;
         private System.Windows.Forms.Button doneButton;
+        private System.Windows.Forms.Label pickingListCustLabel;
+        private System.Windows.Forms.Label dateLabel;
+        private System.Windows.Forms.TextBox pickingListCustomerTextBox;
+        private System.Windows.Forms.TextBox dateTextBox;
+        private System.Windows.Forms.TextBox customerIDTextBox;
+        private System.Windows.Forms.Label customerIDLabel;
     }
 }

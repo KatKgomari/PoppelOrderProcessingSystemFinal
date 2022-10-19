@@ -135,8 +135,9 @@
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(102, 23);
             this.btnInventory.TabIndex = 56;
-            this.btnInventory.Text = "Inventory";
+            this.btnInventory.Text = "Print Inventory Report";
             this.btnInventory.UseVisualStyleBackColor = false;
+            this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
             // 
             // btnCurrentOrders
             // 
@@ -171,6 +172,7 @@
             this.btnCompany.TabIndex = 59;
             this.btnCompany.Text = "Company";
             this.btnCompany.UseVisualStyleBackColor = false;
+            this.btnCompany.Click += new System.EventHandler(this.btnCompany_Click);
             // 
             // dataSetForCustomers
             // 
