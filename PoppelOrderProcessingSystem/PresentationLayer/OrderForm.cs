@@ -28,10 +28,22 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
         private decimal amount;   // This is the price * quantity of each order item.
         private decimal totalSoFar; // This is the total so far
         private decimal remainingCustomerCreditAmount;
+        private int productFound;  // We will insert the customer that is found using the find method here.
 
         // Order items for the order
         private OrderItem orderItem;
         private Collection<OrderItem> orderItems;
+
+        // So we can open the next page:
+        private PickingListForm pickingListForm;
+
+        #endregion
+
+        #region Property Methods 
+        public Collection<OrderItem> OrderItems
+        {
+            get { return orderItems; }
+        }
         #endregion
 
         #region Enumeration
@@ -64,10 +76,11 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
             totalSoFarTextBox.Enabled = false;
             undoButton.Visible = false;
 
-           
+            products = inventoryController.Products;
             // So we can add order items and send them to the checkout page.
-            
             orderItems = new Collection<OrderItem>();
+
+            
 
         }
         #endregion
@@ -82,6 +95,10 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
 
         private void OrderForm_Activated(object sender, EventArgs e)
         {
+            productIDTextBox.Enabled = false;
+            productNameTextBox.Enabled = false;
+            productDescriptionTextBox.Enabled = false;
+            productPriceTextBox.Enabled = false;
             orderItemsListView.View = View.Details;
             setUpOrderItemsListView();
             // ShowAll(false); Actually, not this because I want them to always be visible
@@ -111,7 +128,7 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
             orderItemsListView.Columns.Insert(7, "Product_Category", 120, HorizontalAlignment.Left);
             orderItemsListView.Columns.Insert(8, "Product_Supplier", 120, HorizontalAlignment.Left);
 
-            products = inventoryController.Products;
+            
 
             // Add the product details to each ListView Item
             foreach(Product prod in products)
@@ -173,32 +190,68 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
 
         private void addToOrderButton_Click(object sender, EventArgs e)
         {
-            undoButton.Visible = true;
-            if ((productQuantityTextBox.Text == "") || (productDescriptionTextBox.Text == "") || (productNameTextBox.Text == "") || (productPriceTextBox.Text == "") || (productIDTextBox.Text == "") )
+            
+            if ((productQuantityTextBox.Text == "") || (productDescriptionTextBox.Text == "") || (productNameTextBox.Text == "") || (productPriceTextBox.Text == "") || (productIDTextBox.Text == ""))
             {
                 MessageBox.Show("Please make sure that all areas are filled.");
             }
             else if (Convert.ToInt16(productQuantityTextBox.Text) == 0)
             {
                 MessageBox.Show("Product Quantity can not be zero.");
+                return;
             }
-            else
-            {
+            
+            
                 amount = (Convert.ToDecimal(productPriceTextBox.Text) * Convert.ToDecimal(productQuantityTextBox.Text));
                 totalSoFar += amount;
-                totalSoFarTextBox.Text = amount.ToString();
                 remainingCustomerCreditAmount -= amount;
-                customerCreditAmountTextBox.Text = remainingCustomerCreditAmount.ToString();
+
                 orderItem = new OrderItem();
-                
                 orderItem.ID = productIDTextBox.Text;
+                productFound = FindIndex(orderItem); //We  have found the product in the databse
+
+            if (remainingCustomerCreditAmount >= totalSoFar && products[productFound].ProductNotExpiredQuantity >= Convert.ToDecimal(productQuantityTextBox.Text)){ 
+                totalSoFarTextBox.Text = amount.ToString();
+                customerCreditAmountTextBox.Text = remainingCustomerCreditAmount.ToString();
+                
                 orderItem.Name = productNameTextBox.Text;
                 orderItem.Description = productDescriptionTextBox.Text;
                 orderItem.Price = Convert.ToDecimal(productPriceTextBox.Text);
                 orderItem.Quantity = Convert.ToInt16(productQuantityTextBox.Text);
                 orderItems.Add(orderItem);
+
+                // Must check whether we have not exceeded credit amount
+
+                // Lessening the quantity of the product in the database. We will need the inventoryController
+                productFound = FindIndex(orderItem); //We  have found the product in the databse
+                if (productFound == -1)
+                {
+                    MessageBox.Show("Something went wrong");
+                }
+                else
+                {
+                    products[productFound].ProductNotExpiredQuantity -= orderItem.Quantity;
+                    setUpOrderItemsListView();
+                }
+                undoButton.Visible = true;
                 MessageBox.Show("Product added to order: \nID :" + productIDTextBox.Text + "\n" + productDescriptionTextBox.Text + "\nQuantity: " + productQuantityTextBox.Text);
             }
+            else
+            {
+                // Undo all of the events that occcured as a result of adding the product
+                totalSoFar -= amount;
+                remainingCustomerCreditAmount += amount;
+                if (remainingCustomerCreditAmount < totalSoFar)
+                {
+                    MessageBox.Show("Customer Credit Status will be NEGATIVE.\nInform customer of remaining credit amount." +
+                        "\nCheckout is advised.");
+                }
+                else
+                {
+                    MessageBox.Show("Quantity requested is greater than the quantity currently in stock.");
+                }
+            }
+            
             /* PopulateObject();
              customerController.DataMaintenance(product, DB.DBOperation.Add);
              customerController.FinalizeChanges(customer);
@@ -217,6 +270,18 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
             //The total so far will dcrease
             totalSoFar -= amount;
 
+            // Decreasing the quantity in the database
+            productFound = FindIndex(orderItem); //We  have found the product in the databse
+            if (productFound == -1)
+            {
+                MessageBox.Show("Something went wrong.");
+            }
+            else
+            {
+                products[productFound].ProductNotExpiredQuantity += orderItem.Quantity;
+                setUpOrderItemsListView();
+            }
+
             customerCreditAmountTextBox.Text = remainingCustomerCreditAmount.ToString();
             totalSoFarTextBox.Text = totalSoFar.ToString();
             MessageBox.Show("Product removed from order: \nID :" + orderItem.ID + "\n" + orderItem.Description + "\nQuantity: " + orderItem.Quantity.ToString());
@@ -225,6 +290,49 @@ namespace PoppelOrderProcessingSystem.PresentationLayer
             orderItems.Remove(orderItem);  //The order item field will be set to the most recent order item
 
             undoButton.Visible = false; 
+        }
+
+
+        public int FindIndex(OrderItem orderItem)
+        {
+            //this.orderItem = orderItem;
+            int counter = 0;
+            bool found = false;
+            found = (orderItem.ID == products[counter].ProductID);   //using a Boolean Expression to initialise found
+            while (!(found) & counter < products.Count - 1)
+            {
+                counter += 1;
+                found = (orderItem.ID == products[counter].ProductID);
+            }
+            if (found)
+            {
+                return counter;
+            }
+            else
+            {
+                return -1;
+            }
+
+            
+        }
+
+        private void generatePickingListButton_Click(object sender, EventArgs e)
+        {
+            if(pickingListForm == null)
+            {
+                CreateNewPickingListForm();
+            }
+            if(pickingListForm.listFormClosed)
+            {
+                CreateNewPickingListForm();
+            }
+            pickingListForm.Show();
+        }
+
+        public void CreateNewPickingListForm()
+        {
+            pickingListForm = new PickingListForm(customerController, orderItems, totalSoFar);
+            pickingListForm.StartPosition = FormStartPosition.Manual;
         }
     }
 }

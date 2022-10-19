@@ -41,14 +41,14 @@
             this.accBLabel = new System.Windows.Forms.Label();
             this.addToOrderButton = new System.Windows.Forms.Button();
             this.OrderItemGroupBox = new System.Windows.Forms.GroupBox();
+            this.undoButton = new System.Windows.Forms.Button();
             this.productPriceLabel = new System.Windows.Forms.Label();
             this.productPriceTextBox = new System.Windows.Forms.TextBox();
-            this.nextButton = new System.Windows.Forms.Button();
+            this.generatePickingListButton = new System.Windows.Forms.Button();
             this.customerCreditAmountTextBox = new System.Windows.Forms.TextBox();
             this.customerCreditAmountLabel = new System.Windows.Forms.Label();
             this.totalSoFarLabel = new System.Windows.Forms.Label();
             this.totalSoFarTextBox = new System.Windows.Forms.TextBox();
-            this.undoButton = new System.Windows.Forms.Button();
             this.OrderItemGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -180,6 +180,16 @@
             this.OrderItemGroupBox.TabStop = false;
             this.OrderItemGroupBox.Text = "Order Item";
             // 
+            // undoButton
+            // 
+            this.undoButton.Location = new System.Drawing.Point(25, 235);
+            this.undoButton.Name = "undoButton";
+            this.undoButton.Size = new System.Drawing.Size(105, 23);
+            this.undoButton.TabIndex = 22;
+            this.undoButton.Text = "Undo";
+            this.undoButton.UseVisualStyleBackColor = true;
+            this.undoButton.Click += new System.EventHandler(this.undoButton_Click);
+            // 
             // productPriceLabel
             // 
             this.productPriceLabel.AutoSize = true;
@@ -196,14 +206,15 @@
             this.productPriceTextBox.Size = new System.Drawing.Size(100, 20);
             this.productPriceTextBox.TabIndex = 20;
             // 
-            // nextButton
+            // generatePickingListButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(1017, 450);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(75, 23);
-            this.nextButton.TabIndex = 26;
-            this.nextButton.Text = "Next";
-            this.nextButton.UseVisualStyleBackColor = true;
+            this.generatePickingListButton.Location = new System.Drawing.Point(965, 450);
+            this.generatePickingListButton.Name = "generatePickingListButton";
+            this.generatePickingListButton.Size = new System.Drawing.Size(127, 23);
+            this.generatePickingListButton.TabIndex = 26;
+            this.generatePickingListButton.Text = "Generate Picking List";
+            this.generatePickingListButton.UseVisualStyleBackColor = true;
+            this.generatePickingListButton.Click += new System.EventHandler(this.generatePickingListButton_Click);
             // 
             // customerCreditAmountTextBox
             // 
@@ -243,16 +254,6 @@
             this.totalSoFarTextBox.Size = new System.Drawing.Size(100, 20);
             this.totalSoFarTextBox.TabIndex = 28;
             // 
-            // undoButton
-            // 
-            this.undoButton.Location = new System.Drawing.Point(25, 235);
-            this.undoButton.Name = "undoButton";
-            this.undoButton.Size = new System.Drawing.Size(105, 23);
-            this.undoButton.TabIndex = 22;
-            this.undoButton.Text = "Undo";
-            this.undoButton.UseVisualStyleBackColor = true;
-            this.undoButton.Click += new System.EventHandler(this.undoButton_Click);
-            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,7 +264,7 @@
             this.Controls.Add(this.totalSoFarLabel);
             this.Controls.Add(this.customerCreditAmountLabel);
             this.Controls.Add(this.customerCreditAmountTextBox);
-            this.Controls.Add(this.nextButton);
+            this.Controls.Add(this.generatePickingListButton);
             this.Controls.Add(this.OrderItemsLabel);
             this.Controls.Add(this.orderItemsListView);
             this.Controls.Add(this.OrderItemGroupBox);
@@ -294,7 +295,7 @@
         private System.Windows.Forms.Label accBLabel;
         private System.Windows.Forms.Button addToOrderButton;
         private System.Windows.Forms.GroupBox OrderItemGroupBox;
-        private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.Button generatePickingListButton;
         private System.Windows.Forms.TextBox customerCreditAmountTextBox;
         private System.Windows.Forms.Label customerCreditAmountLabel;
         private System.Windows.Forms.Label totalSoFarLabel;

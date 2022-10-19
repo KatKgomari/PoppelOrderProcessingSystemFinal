@@ -16,6 +16,7 @@ namespace PoppelOrderProcessingSystem.BusinessLayer
         // This will be for specically displaying the inventory so we can choose the products 
         private Collection<Product> products;
         private Product product;
+       // private OrderItem orderItem;
 
         
         #endregion
@@ -105,7 +106,10 @@ namespace PoppelOrderProcessingSystem.BusinessLayer
                 return -1;
             }
         }
-        #endregion
+
+        
+        
+#endregion
 
     }
 }

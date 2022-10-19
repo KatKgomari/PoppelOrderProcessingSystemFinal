@@ -101,6 +101,12 @@
     <Compile Include="PresentationLayer\OrderForm.Designer.cs">
       <DependentUpon>OrderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PresentationLayer\PickingListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PresentationLayer\PickingListForm.Designer.cs">
+      <DependentUpon>PickingListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PresentationLayer\PoppelMDIParent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PresentationLayer\OrderForm.resx">
       <DependentUpon>OrderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PresentationLayer\PickingListForm.resx">
+      <DependentUpon>PickingListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PresentationLayer\PoppelMDIParent.resx">
       <DependentUpon>PoppelMDIParent.cs</DependentUpon>
